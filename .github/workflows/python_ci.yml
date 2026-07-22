@@ -42,10 +42,11 @@ jobs:
 
       - name: Run Docker container
         run: |
+          docker rm -f webserver 2>/dev/null || true
           docker run -d -p 8080:80 --name webserver mywebserver:${{ github.sha }}
 
       - name: Test container is running
         run: |
           sleep 5
-          docker ps | grep mywebserver     
+          docker ps | grep webserver     
           curl http://localhost:8080
