@@ -33,12 +33,12 @@ jobs:
       - name: Build docker image
         if: success()
         run: |
-         docker build -t mywebserver:latest .
+         docker build -t mywebserver:${{ github.sha }} .
 
       - name: Run Docker container
-        if: soccess()
+        if: success()
         run: |
-          docker run -d -p 8080:80 --name webserver mywebserver:latest
+          docker run -d -p 8080:80 --name webserver mywebserver:${{ github.sha }}
 
       - name: Test container is running
         if: success()
