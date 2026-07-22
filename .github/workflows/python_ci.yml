@@ -6,9 +6,11 @@ jobs:
     steps:
       - name: Clone repository
         run: git clone https://github.com/Amir-dev0/gha-lab-1.git
-      - name: changing working directory  
-        run: cd gha-lab-1
+
       - name: Installing requirements
         run: pip install -r requirements.txt
+        working-directory: gha-lab-1
+
       - name: Testing  
         run: pytest test_program.py
+        working-directory: gha-lab-1
