@@ -36,7 +36,7 @@ jobs:
          docker build -t mywebserver:latest .
 
       - name: Run Docker container
-        if: soccess()
+        if: success()
         run: |
           docker run -d -p 8080:80 --name webserver mywebserver:latest
 
